@@ -1,0 +1,227 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h1 style=\"color:rgb(0,120,170)\">Assignment 1: Bayes Classifier, Gaussian Classification, Maximum Likelihood</h1>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This material, no matter whether in printed or electronic form, may be used for personal and non-commercial educational use only. Any reproduction of this material, no matter whether as a whole or in parts, no matter whether in printed or in electronic form, requires explicit prior acceptance of the authors."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h2 style=\"color:rgb(0,120,170)\">Task 1: On the Bayes optimal classifier</h2>\n",
+    "\n",
+    "Suppose we have a two-class classification problem, where we denote\n",
+    "the two classes with $+1$ and $-1$. Further assume that the joint\n",
+    "distribution of $\\mathbf{x}$ and $y$, $p(\\mathbf{x},y)$, is known and that\n",
+    "the distributions of the two classes do not overlap, i.e.\n",
+    "\n",
+    "$$\n",
+    "\\min\\{p(\\mathbf{x}|y=+1),p(\\mathbf{x}|y=-1)\\}=0.\n",
+    "$$\n",
+    "\n",
+    "Determine an optimal classification function $g$ and compute the\n",
+    "generalization error using the zero-one loss function.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(210,90,80)\">Calculation (20 points):</h3>\n",
+    "\n",
+    "Your calculation here."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h2 style=\"color:rgb(0,120,170)\">Task 2: Gaussian classification task</h2>\n",
+    "\n",
+    "Assume that the two classes in data set ${\\tt DataSet1a}$ are\n",
+    "distributed according to multivariate normal distributions. \n",
+    "* Estimate the means and covariance matrices as well as $p(y=+1)$ and $p(y=-1)$ from the data and print your results. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(208,90,80)\">Code (10 points)</h3>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import sklearn\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from scipy.stats import multivariate_normal\n",
+    "from mpl_toolkits.mplot3d import Axes3D\n",
+    "import random\n",
+    "\n",
+    "#read data, split into X(features) and y(labels)\n",
+    "Z = np.genfromtxt('DataSet1a.csv', delimiter=',', skip_header=1)\n",
+    "X, y = Z[:,:-1], Z[:,-1]\n",
+    "#further split features according to labels\n",
+    "Xpos=X[y==1]\n",
+    "Xneg=X[y==-1]\n",
+    "\n",
+    "# Begin your code\n",
+    "\n",
+    "\n",
+    "\n",
+    "# End your code"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* Implement an optimal classification function $g$ (see slide 11) by calculating the values of the corresponding parameters $\\mathbf{A}$, $\\mathbf{w}$ and $b$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(208,90,80)\">Code (15 points)</h3>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Begin your code\n",
+    "\n",
+    "\n",
+    "\n",
+    "# End your code"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* Visualize the classification function and the decision boundaries in a two-dimensional plot."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(208,90,80)\">Code (15 points)</h3>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Begin your code\n",
+    "\n",
+    "\n",
+    "\n",
+    "# End your code"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h2 style=\"color:rgb(0,120,170)\">Task 3: Maximum likelihood for exponential distribution</h2>\n",
+    "\n",
+    "Given the model class $M$ of all exponential distributions with \n",
+    "parameter\n",
+    "$\\lambda$.\n",
+    "i.e. $M=\\{f_{\\lambda}(x) \\mid \\lambda > 0\\}$ with\n",
+    "\n",
+    "$$\n",
+    "      f_{\\lambda}(x) = \\begin{cases}\\displaystyle\n",
+    "                         \\lambda {\\rm e}^{-\\lambda x} & x \\ge 0 \\\\\n",
+    "\t\t\t0 & x < 0\n",
+    "                      \\end{cases} \n",
+    "$$\n",
+    "\n",
+    "* Derive a formula for the maximum likelihood estimator $\\lambda^*$ for the parameter $\\lambda$. Hint: Maximize the logarithm of the likelihood function instead of the likelihood function itself."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(210,90,80)\">Calculation (20 points):</h3>\n",
+    "\n",
+    "Your calculation here."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* Apply the formula for $\\lambda^*$ from the previous part to the data of ${\\tt DataSet1b}$. Visualize the density defined by this optimal $\\lambda^*$ and compare it to the true data distribution (e.g. by using a histogram)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h3 style=\"color:rgb(208,90,80)\">Code (20 points)</h3>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# load the data\n",
+    "data = np.genfromtxt('DataSet1b.csv', delimiter=',', skip_header=1)\n",
+    "# estimate the parameter according to the previously derived formula\n",
+    "\n",
+    "# Begin your code\n",
+    "\n",
+    "\n",
+    "\n",
+    "# End your code"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
